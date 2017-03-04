@@ -49,7 +49,7 @@ for ind in col_index:
 	print new_hash
 
 
-with open('date.csv', 'wb') as csvfile:
+with open('gender.csv', 'wb') as csvfile:
     fieldnames = [str1, 'NO', 'YES']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
