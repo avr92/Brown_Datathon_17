@@ -25,9 +25,12 @@ for row in data:
 
 print len(h_map[col_index[0]])
 
-col_index = col_index[13:]
-i = 0
+str1 = 'gender'
+#col_index = col_index[13:]
+i = 2
 for ind in col_index:
+	if ind != str1:
+		continue
 	#if ind == 'p_sessionDuration' or ind == 'p_pageViews' or ind == 'p_TotalPrice':
 	#	continue
 	new_hash = {}
@@ -35,8 +38,7 @@ for ind in col_index:
 		if d not in new_hash:
 			new_hash[d] = [0,0]
 	print len(new_hash)
-	for row in data:
-		row = row[13:]
+	for row in data[1:]:
 		for key in new_hash:
 			if row[i] == key:
 				if row[len(col_index) - 1] == '0':
@@ -45,5 +47,12 @@ for ind in col_index:
 					new_hash[key][1] += 1
 				break
 	print new_hash
-	i += 1
+
+
+with open('date.csv', 'wb') as csvfile:
+    fieldnames = [str1, 'NO', 'YES']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    writer.writeheader()
+    for key in new_hash:
+		writer.writerow({str1: key, 'NO': str(new_hash[key][0]), 'YES': str(new_hash[key][1])})
 
