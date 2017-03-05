@@ -25,9 +25,9 @@ for row in data:
 
 print len(h_map[col_index[0]])
 
-str1 = 'gender'
+str1 = 'BookingPurchase'
 #col_index = col_index[13:]
-i = 2
+i = 16
 for ind in col_index:
 	if ind != str1:
 		continue
@@ -49,7 +49,7 @@ for ind in col_index:
 	print new_hash
 
 
-with open('gender.csv', 'wb') as csvfile:
+with open('./DataVisualization/PastMapInteractions.csv', 'wb') as csvfile:
     fieldnames = [str1, 'NO', 'YES']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
